@@ -42,6 +42,8 @@ To recreate the qiime2 environment:
 conda env create -f environment/qiime2_env.yml
 conda activate qiime2_env
 
+```
+
 ###  Download Required File
 
 Due to size restrictions, the `demux-single-end.qza` file (~600MB) is not included in this repository.
