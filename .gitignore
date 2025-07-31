@@ -1,0 +1,16 @@
+# Ignore Python cache files and folders
+__pycache__/
+*.py[cod]
+*.pyo
+**/__pycache__/
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore macOS system files
+.DS_Store
+
+# Optional: ignore Streamlit config/log files
+.streamlit/*.toml
+*.log
