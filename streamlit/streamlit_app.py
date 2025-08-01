@@ -6,10 +6,6 @@ import plotly.graph_objects as go
 import colorsys
 import os
 import sys
-import os
-import streamlit as st
-
-st.write("Current working directory:", os.getcwd())
 
 st.set_page_config(layout="wide")
 st.title("Crohn's Microbiome Analysis Dashboard")
