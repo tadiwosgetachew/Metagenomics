@@ -268,7 +268,8 @@ st.markdown("<div style='margin: 60px 0;'></div>", unsafe_allow_html=True)
 # ---------- ANCOM Volcano & Tables ----------
 st.header("3. Differential Abundance")
 try:
-    dfv = pd.read_csv("data/ancom_volcano.tsv", sep="\t", header=None)    dfv.columns = ['Taxon','CLR F-statistic','W']
+    dfv = pd.read_csv("data/ancom_volcano.tsv", sep="\t", header=None)    
+    dfv.columns = ['Taxon','CLR F-statistic','W']
     dfv['W'] = pd.to_numeric(dfv['W'], errors='coerce')
     dfv['CLR F-statistic'] = pd.to_numeric(dfv['CLR F-statistic'], errors='coerce')
     dfv.dropna(subset=['W','CLR F-statistic'], inplace=True)
