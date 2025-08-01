@@ -35,8 +35,7 @@ def safe_print(text):
 st.header("1. Alpha Diversity")
 st.subheader("1.1. Faith's Phylogenetic Diversity by Disease Group")
 try:
-    dfpd = pd.read_csv(r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\faith_pd_group_significance.tsv", sep="\t", comment='#')
-    
+    dfpd = pd.read_csv("data/faith_pd_group_significance.tsv", sep="\t", comment='#')    
     fig = px.box(
         dfpd, 
         x='disease_group', 
@@ -101,7 +100,7 @@ st.markdown("<div style='margin: 40px 0;'></div>", unsafe_allow_html=True)   #Ad
 # ---------- Shannon Diversity ----------
 st.subheader("1.2. Shannon Diversity Index by Disease Group")
 try:
-    dfsh = pd.read_csv(r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\shannon_group_significance.tsv", sep="\t", comment='#')
+    dfsh = pd.read_csv("data/shannon_group_significance.tsv", sep="\t", comment='#')
     
     fig = px.box(
         dfsh, 
@@ -207,8 +206,8 @@ try:
         <tr><td>50</td><td>999</td><td>5.050342</td><td>0.001</td><td>0.001</td></tr></table>
         """
 
-    fp_ord = r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\ordination.txt"
-    fp_meta = r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\metadata.tsv"
+    fp_ord = "data/ordination.txt"
+    fp_meta = "data/metadata.tsv"
     df_ord, variances = load_ordination(fp_ord)
     df_meta = load_metadata(fp_meta)
     dfm = pd.merge(df_ord, df_meta, on="SampleID", how="inner")
@@ -269,8 +268,7 @@ st.markdown("<div style='margin: 60px 0;'></div>", unsafe_allow_html=True)
 # ---------- ANCOM Volcano & Tables ----------
 st.header("3. Differential Abundance")
 try:
-    dfv = pd.read_csv(r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\ancom_volcano.tsv", sep="\t", header=None)
-    dfv.columns = ['Taxon','CLR F-statistic','W']
+    dfv = pd.read_csv("data/ancom_volcano.tsv", sep="\t", header=None)    dfv.columns = ['Taxon','CLR F-statistic','W']
     dfv['W'] = pd.to_numeric(dfv['W'], errors='coerce')
     dfv['CLR F-statistic'] = pd.to_numeric(dfv['CLR F-statistic'], errors='coerce')
     dfv.dropna(subset=['W','CLR F-statistic'], inplace=True)
@@ -350,7 +348,7 @@ try:
     # =========================
     # Load actual percentile abundance data
     # =========================
-    percentile_file = r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\percent-abundances.tsv"
+    percentile_file = "data/percent-abundances.tsv"
     df_percentile_raw = pd.read_csv(percentile_file, sep="\t", skiprows=[1])  # Skip second header row
 
     # Flatten headers manually (CD and Control groups with 0-100 percentiles)
@@ -395,7 +393,7 @@ st.markdown("<div style='margin: 60px 0;'></div>", unsafe_allow_html=True)   #Ad
 # ---------- Bar Plot: Taxa ----------
 st.header("4. Taxonomic Compositions")
 try:
-    df = pd.read_csv(r"C:\Users\tadia\Desktop\crohn's-microbiom-analysis\streamlit\data\taxa_bar_level_6.csv", index_col=0)
+    df = pd.read_csv("data/taxa_bar_level_6.csv", index_col=0)
     df.reset_index(inplace=True)
     if 'index' in df.columns:
         df.rename(columns={'index':'SampleID'}, inplace=True)
