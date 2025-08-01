@@ -21,6 +21,11 @@ This project explores gut microbiome differences between Crohn’s disease (CD) 
 
 ---
 
+## Live Dashboard
+
+One can explore interactive Streamlit dashboard here:  
+  [Dashboard Streamlit](https://tadiwos-crohns-metagenomics.streamlit.app/)
+
 ## Tools & Technologies
 
 - **QIIME2 2024.5** for microbiome analysis  
